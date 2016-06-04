@@ -18,15 +18,14 @@
 #
 
 category: baseline
-configure: './bootstrap.sh && ./configure --prefix=$prefix
+configure: './configure --prefix=$prefix
   --with-c_glib --with-cpp --with-libevent --with-python
   --without-csharp --without-d --without-erlang --without-go
   --without-haskell --without-java --without-lua --without-nodejs
   --without-perl --without-php --without-ruby --without-zlib
   --without-qt4 --without-qt5
   --disable-tests --disable-tutorial $config_opt
-  CC=$cc CXX=$cxx PY_PREFIX=$prefix CXXFLAGS="-DNDEBUG"
-  '
+  CC=$cc CXX=$cxx PY_PREFIX=$prefix CXXFLAGS="-DNDEBUG"'
 depends:
 - libtool
 - automake
@@ -40,8 +39,8 @@ depends:
 - pkg-config
 - twisted
 gitrev: 0.9.3
-inherit: bootstrapautoconf
-source: git+https://github.com/apache/thrift.git
+inherit: autoconf
+source: wget+http://apache.osuosl.org/thrift/0.9.3/thrift-0.9.3.tar.gz
 satisfy:
     pacman: thrift
     pkgconfig: thrift
